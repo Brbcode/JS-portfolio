@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ResponsiveImage from './ResponsiveImage';
 
 export default function ErrorElement({ errorCode }) {
   return (
@@ -9,6 +10,7 @@ export default function ErrorElement({ errorCode }) {
         {' '}
         {errorCode}
       </span>
+      <ResponsiveImage set={{ name: 'messy-desk', sizes: [300, 768] }} />
       <div className="toremove" />
     </>
   );
