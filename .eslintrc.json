@@ -4,6 +4,7 @@
         "browser": true
     },
     "rules": {
-        "linebreak-style": "off"
+        "linebreak-style": "off",
+        "global-require": 0
     }
 }
