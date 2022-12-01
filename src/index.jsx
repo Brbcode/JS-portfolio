@@ -10,7 +10,7 @@ function App() {
       <h1>React App</h1>
       <p>Test</p>
       <hr />
-      <ResponsiveImage loader={programmerDesk} alt="Hola mundo" />
+      <ResponsiveImage className="cls" loader={programmerDesk} alt="Hola mundo" width="300px" />
     </>
   );
 }

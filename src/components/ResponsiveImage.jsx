@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function ResponsiveImage({
-  loader, placeholder, placeholderError, alt,
-}) {
+export default function ResponsiveImage(props) {
+  const {
+    loader, placeholder, placeholderError, alt, ...otherProps
+  } = props;
+
   const group = loader.keys().map((i) => ({
     path: i,
     size: i.match(/([0-9]+w)(?!.*\1)/g)[0].slice(0, -1),
@@ -22,6 +24,7 @@ export default function ResponsiveImage({
           e.target.onerror = null; // Prevent loop
           e.target.src = `${placeholderError}`;
         }}
+        {...otherProps}
       />
     </>
   );
