@@ -19,6 +19,21 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(png|svg|jpg|gif|jpe?g)$/,
+        use: [
+          {
+            options: {
+              name: '[hash].[name].[ext]',
+              outputPath: 'public/images/',
+              publicPath: 'public/images/',
+              emitFile: true,
+              esModule: false,
+            },
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -31,6 +46,12 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 9000,
+    port: 3000,
+  },
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'src/components'),
+    },
+    extensions: ['.js', '.jsx'],
   },
 };
