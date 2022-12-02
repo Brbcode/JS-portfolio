@@ -45,7 +45,7 @@ module.exports = {
         use: [
           {
             options: {
-              name: '[hash].[name].[ext]',
+              name: '[path][hash].[name].[ext]',
               outputPath: 'public/images/',
               publicPath: 'public/images/',
               emitFile: true,
