@@ -68,6 +68,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './src/index.html'),
+      favicon: path.join(__dirname, './public/favicon.ico'),
     }),
     new MiniCssExtractPlugin({
       // Chunk name 'index' is set by entry point where is not recognized by any cacheGroup
