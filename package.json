@@ -10,8 +10,9 @@
     "start": "run-script-os",
     "build:darwin:linux": "NODE_ENV=production webpack --mode=production",
     "build:win32": "set NODE_ENV=production && webpack --mode=production",
-    "build:default":"echo 'Platfom not found'.",
-    "build":"run-script-os",
+    "build:default": "echo 'Platfom not found'.",
+    "build": "run-script-os",
+    "build-clean": "echo 'Cleaning dist folder'. && rm -r -f ./dist/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
