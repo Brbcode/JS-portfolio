@@ -1,6 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import ResponsiveImage from './components/ResponsiveImage';
+import './scss/main.scss';
+import './scss/header.scss';
+import './scss/nest/header.scss';
+import './scss/other.scss';
 
 const testSet = {
   name: 'programmer-desk',
