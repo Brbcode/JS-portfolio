@@ -4,8 +4,14 @@
   "description": "Esta aplicación proporciona un buscador de libros digitales, muestra la información relacionada de dicho libro y permite descargar dicho libro.",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=development && webpack serve --mode development",
-    "build": "set NODE_ENV=production && webpack --mode=production",
+    "start:darwin:linux": "NODE_ENV=development webpack serve --mode development",
+    "start:win32": "set NODE_ENV=development && webpack serve --mode development",
+    "start:default": "echo 'Platfom not found'.",
+    "start": "run-script-os",
+    "build:darwin:linux": "NODE_ENV=production webpack --mode=production",
+    "build:win32": "set NODE_ENV=production && webpack --mode=production",
+    "build:default":"echo 'Platfom not found'.",
+    "build":"run-script-os",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -44,6 +50,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.1",
     "prettier": "^2.8.0",
+    "run-script-os": "^1.1.6",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
