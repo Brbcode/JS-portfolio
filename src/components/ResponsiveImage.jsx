@@ -1,32 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// require('../../public/img/sets/programmer-desk-300w.png');
-const test = 'programmer-desk-300w';
-// require(`../../public/img/sets/${test}.png`);
-require.context('../../public/img/sets/', true, /programmer-desk-(300|768)w\.png$/);
-// {require.context('../../public/img/sets', true, 'programmer-desk-300w.png')} error
+export default function ResponsiveImage(props) {
+  const {
+    loader, placeholder, placeholderError, alt, ...otherProps
+  } = props;
 
-export default function ResponsiveImage({ set, placeholder, placeholderError }) {
+  const group = loader.keys().map((i) => ({
+    path: i,
+    size: i.match(/([0-9]+w)(?!.*\1)/g)[0].slice(0, -1),
+  })).sort((a, b) => a.size - b.size);
+
   return (
     <>
       <p>test</p>
-      <img src={placeholderError} title={set.name} alt="todo" />
+      <img
+        src={placeholder}
+        srcSet={group.map(({ path, size }) => `${loader(path)} ${size}w`)}
+        sizes={group.map(({ size }, i, arr) => `${(i !== (arr.length - 1))
+          ? `(max-width: ${size}px) ` : ''}${size}px`)}
+        alt={alt}
+        onError={(e) => {
+          e.target.onerror = null; // Prevent loop
+          e.target.src = `${placeholderError}`;
+        }}
+        {...otherProps}
+      />
     </>
   );
 }
 
 ResponsiveImage.propTypes = {
-  set: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
-    extension: PropTypes.string.isRequired,
-  }).isRequired,
+  loader: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   placeholderError: PropTypes.string,
+  alt: PropTypes.string.isRequired,
 };
 
 ResponsiveImage.defaultProps = {
-  placeholder: 'public/images/img-placeholder.jpg',
-  placeholderError: 'public/images/img-placeholder-404.jpg',
+  placeholder: require('../../public/img/img-placeholder.jpg'),
+  placeholderError: require('../../public/img/img-placeholder-404.jpg'),
 };

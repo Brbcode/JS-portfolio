@@ -6,17 +6,15 @@ import './scss/header.scss';
 import './scss/nest/header.scss';
 import './scss/other.scss';
 
-const testSet = {
-  name: 'programmer-desk',
-  sizes: [300, 768, 1280],
-  extension: 'png',
-};
+const programmerDesk = require.context('../public/img/sets/', true, /programmer-desk-(300|768|1280)w\.png$/);
 
 function App() {
   return (
     <>
       <h1>React App</h1>
-      <ResponsiveImage set={testSet} />
+      <p>Test</p>
+      <hr />
+      <ResponsiveImage className="cls" loader={programmerDesk} alt="Hola mundo" width="300px" />
     </>
   );
 }
