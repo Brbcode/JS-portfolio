@@ -12,15 +12,12 @@ import Image from '../ResponsiveImage';
 library.add(faHouse, faReply);
 
 const messyDesk = require.context('../../../public/img/sets/', true, /messy-desk-(300|768|1280)w\.png$/);
-const sectionBg = require('../../../public/img/section-bg.png');
-
-console.log(sectionBg);
 
 export default function Error({ errorCode }) {
   const navigate = useNavigate();
 
   return (
-    <section id="intro" className="error" style={{ background: `url("${sectionBg}")`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat' }}>
+    <section id="intro" className="error">
       <section className="text">
         <h1>
           <em>4</em>

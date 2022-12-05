@@ -7,6 +7,9 @@ section#intro.error{
     height: calc(100vh - t-var('footer-height'));
     @include flex(column);
     $text-height: 190px;
+    background: url('../../../public/img/section-bg.png') 0% 0% / 100% no-repeat;
+
+
 
     section.text{
         padding: 1em 2em;       

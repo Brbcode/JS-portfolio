@@ -27,6 +27,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    assetModuleFilename: 'public/images/[path][hash].[name].[ext]',
   },
   module: {
     rules: [
@@ -42,18 +43,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif|jpe?g)$/,
-        use: [
-          {
-            options: {
-              name: '[path][hash].[name].[ext]',
-              outputPath: 'public/images/',
-              publicPath: 'public/images/',
-              emitFile: true,
-              esModule: false,
-            },
-            loader: 'file-loader',
-          },
-        ],
+        type: 'asset/resource',
       },
       {
         test: /\.s[ac]ss$/i,
