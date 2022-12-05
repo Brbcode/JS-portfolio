@@ -1,19 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faHouse, faReply,
 } from '@fortawesome/free-solid-svg-icons';
-import './error.scss';
+import './not_found.scss';
 import Image from '../ResponsiveImage';
 
 library.add(faHouse, faReply);
 
-const messyDesk = require.context('../../../public/img/sets/', true, /messy-desk-(300|768|1280)w\.png$/);
+const messyDesk = require.context('../../../public/images/sets/', true, /messy-desk-(300|768|1280)w\.png$/);
 
-export default function Error({ errorCode }) {
+export default function NotFound() {
   const navigate = useNavigate();
 
   return (
@@ -43,11 +42,3 @@ export default function Error({ errorCode }) {
     </section>
   );
 }
-
-Error.propTypes = {
-  errorCode: PropTypes.number,
-};
-
-Error.defaultProps = {
-  errorCode: 404,
-};

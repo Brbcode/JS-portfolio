@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Style imports
 import './scss/main.scss';
 // Components imports
-import Error from './components/Error/Error';
+import NotFound from './components/NotFound/NotFound';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -26,5 +26,5 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  children: <Error />,
+  children: <NotFound />,
 };

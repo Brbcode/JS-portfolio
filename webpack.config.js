@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const devMode = process.env.NODE_ENV.trim() !== 'production';
-const chucksCSS = ['main', 'error'];
+const chucksCSS = ['main', 'not-found'];
 
 module.exports = {
   entry: {
@@ -27,7 +27,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    assetModuleFilename: 'public/images/[path][hash].[name].[ext]',
+    assetModuleFilename: '[path][hash][ext]',
+    clean: true,
   },
   module: {
     rules: [
@@ -44,6 +45,7 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif|jpe?g)$/,
         type: 'asset/resource',
+
       },
       {
         test: /\.s[ac]ss$/i,
@@ -63,6 +65,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Chunk name 'index' is set by entry point where is not recognized by any cacheGroup
       filename: ({ chunk }) => `public/css/${chunk.name === 'index' ? 'styles' : chunk.name}.min.css`,
+      chunkFilename: '[id].css',
     }),
   ],
   devServer: {

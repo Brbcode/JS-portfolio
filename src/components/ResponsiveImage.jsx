@@ -35,6 +35,6 @@ ResponsiveImage.propTypes = {
 };
 
 ResponsiveImage.defaultProps = {
-  placeholder: require('../../public/img/img-placeholder.jpg'),
-  placeholderError: require('../../public/img/img-placeholder-404.jpg'),
+  placeholder: require('../../public/images/img-placeholder.jpg'),
+  placeholderError: require('../../public/images/img-placeholder-404.jpg'),
 };
