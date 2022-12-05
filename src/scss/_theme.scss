@@ -36,7 +36,6 @@ $theme-layers: (
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300&display=swap');
 
 $theme-fonts: (
   'default': "'Roboto', sans-serif"
@@ -55,11 +54,13 @@ $theme-fonts: (
 
 $theme-vars: (
   'header-height': 74px,
+  'footer-height': 45px,
   'body-color': #212529,
   'primary-color': #1b1a2e,
   'active-color': #d4e4fe,
   'active-text-color': #181a27,
   'primary-font-color': #fff,
+  'primary-em-font-color': #be50f4,
 );
 
 @function t-var($name,$raw: false){
@@ -75,6 +76,8 @@ $theme-vars: (
 }
 
 @mixin theme{
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300&display=swap');
+
   @if(map-has-key($theme-fonts,'default')){
     *{
       @include theme-font('default');

@@ -12,21 +12,18 @@ export default function ResponsiveImage(props) {
   })).sort((a, b) => a.size - b.size);
 
   return (
-    <>
-      <p>test</p>
-      <img
-        src={placeholder}
-        srcSet={group.map(({ path, size }) => `${loader(path)} ${size}w`)}
-        sizes={group.map(({ size }, i, arr) => `${(i !== (arr.length - 1))
-          ? `(max-width: ${size}px) ` : ''}${size}px`)}
-        alt={alt}
-        onError={(e) => {
-          e.target.onerror = null; // Prevent loop
-          e.target.src = `${placeholderError}`;
-        }}
-        {...otherProps}
-      />
-    </>
+    <img
+      src={placeholder}
+      srcSet={group.map(({ path, size }) => `${loader(path)} ${size}w`)}
+      sizes={group.map(({ size }, i, arr) => `${(i !== (arr.length - 1))
+        ? `(max-width: ${size}px) ` : ''}${size}px`)}
+      alt={alt}
+      onError={(e) => {
+        e.target.onerror = null; // Prevent loop
+        e.target.src = `${placeholderError}`;
+      }}
+      {...otherProps}
+    />
   );
 }
 

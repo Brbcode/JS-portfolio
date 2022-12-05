@@ -1,0 +1,9 @@
+@import '../../scss/theme';
+
+#root > footer{
+    background: t-var('primary-color');
+    padding: .5em;
+    font-size: .8rem;
+    text-align: center;
+    height: t-var('footer-height');
+}

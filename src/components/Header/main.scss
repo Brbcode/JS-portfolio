@@ -1,0 +1,167 @@
+@use 'sass:math';
+@import '../../scss/theme';
+@import '../../scss/flexbox';
+@import '../../scss/mixins';
+
+#root > header{
+    position: fixed;
+    top: 0;
+    z-index: z('site-header');
+    width: 100vw;    
+    height: t-var('header-height');
+    background: t-var('primary-color');
+    font-size: 1.4rem;
+    padding: 1em 2em;    
+
+    > nav{
+      position: fixed;
+      top: t-var('header-height');      
+      left: 0;
+      background: inherit;
+      width: 100vw;
+      height: 0;      
+      box-sizing: border-box;
+      overflow: hidden;            
+      @include transition(height 600ms, padding-top 600ms, padding-bottom 600ms);
+      $height-controller: 16px;
+      padding-left: 2em;
+      padding-right: 2em;
+
+      &.active{
+        visibility: visible;
+        border-top: 1px solid rgba(t-var('active-color',true),.5);
+        height: calc(100vh - t-var('header-height'));        
+        padding-top: .5em;  
+        padding-bottom: $height-controller; 
+      }
+
+      &::before{
+        @include pseudo;
+        $height: $height-controller;
+        left: 0;
+        bottom: 0;
+        background: inherit;
+        width: 100vw;
+        height: $height;
+      }
+
+      &::after{
+        @include pseudo;
+        @include rounded;
+        $height: 7px;
+        left: 50vw;
+        @include transform(translateX(-50%));
+        bottom: 1*$height - math.div($height-controller - $height,2);        
+        width: 75px;
+        height: $height;
+        background: t-var('active-color');
+        @include box-shadow(inset 0 0 4px rgba(t-var('primary-em-font-color',true),1));
+      }
+
+      ul{
+        @include grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
+
+        li{
+          &:nth-child(odd):last-child{
+            grid-column: 1/3;
+          }
+        }
+
+        a{          
+          display: inline-block;
+          width: 100%;
+          @include rounded;
+          padding: 1em .6em;
+          border: 1px solid t-var('primary-em-font-color');
+          font-weight: 700;
+
+          &.active{
+            background: t-var('primary-em-font-color');
+            color: t-var('active-text-color');
+          }
+        }
+      }
+    }  
+}
+
+@include mq('tablet'){
+  #root > header{    
+    background: transparent;
+    transition: background-color .3s;
+
+    &.sticky{
+      backdrop-filter: blur(10px);
+      background-color: #1b1a2e63;
+      box-shadow: 0 10px 10px 0 rgba(9,5,29,.171);
+    }
+    @supports not (selector(:has(*))){
+      background-color: t-var('primary-color');
+    }
+    &:has(>nav.active){
+      background-color: t-var('primary-color');
+    }    
+
+    .burger-button{
+      display: none;
+    }
+
+    > nav{
+      top: 0;
+      position: relative;
+      height: max-content;
+      padding: 0;
+      font-size: 1.2rem;
+      background: transparent;
+
+      &::before, &::after{
+        display: none;
+      }
+
+      ul{
+        @include flex(row);
+        @include justify-content(flex-end);
+
+        li{
+          a{
+            background: transparent;
+            color: t-var('primary-font-color');
+            border: none;
+            position: relative;
+            padding: .5em .6em;
+
+            &::before{
+              @include pseudo;
+              @include rounded;
+              @include transition(.3s);
+              @include transform(translateX(-50%));
+              height: 4px;
+              width: 0%;
+              left: 50%;
+              bottom: 0;
+              background-color: t-var('primary-em-font-color');              
+            }
+
+            &.active{
+              background: transparent;
+              color: t-var('primary-font-color');
+              border: none; 
+
+              > svg{
+                color:  t-var('primary-em-font-color');;
+              }
+            }
+
+            &:hover{
+              &::before{
+                width: 100%;
+              }
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}

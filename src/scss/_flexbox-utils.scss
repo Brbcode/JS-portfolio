@@ -1,0 +1,16 @@
+
+.flex-row{
+    @include flex(row);
+}
+
+.flex-col{
+    @include flex(column);
+}
+
+.align-items-center{
+    @include align-items(center);
+}
+
+.justify-content-space-between{
+    @include justify-content(space-between);
+}

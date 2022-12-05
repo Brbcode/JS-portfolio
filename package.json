@@ -12,7 +12,7 @@
     "build:win32": "set NODE_ENV=production && webpack --mode=production",
     "build:default": "echo 'Platfom not found'.",
     "build": "run-script-os",
-    "build-clean": "echo 'Cleaning dist folder'. && rm -r -f ./dist/*",
+    "build-clean": "echo 'Cleaning dist folder'. && rm -r -Force ./dist/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,9 +30,14 @@
   },
   "homepage": "https://github.com/Brbcode/JS-portfolio#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "classnames": "^2.3.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

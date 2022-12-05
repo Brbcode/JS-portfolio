@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const devMode = process.env.NODE_ENV.trim() !== 'production';
-const chucksCSS = ['main', 'header', 'footer'];
+const chucksCSS = ['main', 'error'];
 
 module.exports = {
   entry: {
@@ -72,7 +72,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       // Chunk name 'index' is set by entry point where is not recognized by any cacheGroup
-      filename: ({ chunk }) => `public/css/${chunk.name === 'index' ? 'styles' : chunk.name}.css`,
+      filename: ({ chunk }) => `public/css/${chunk.name === 'index' ? 'styles' : chunk.name}.min.css`,
     }),
   ],
   devServer: {

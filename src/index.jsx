@@ -1,21 +1,25 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import ResponsiveImage from './components/ResponsiveImage';
-import './scss/main.scss';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
 
-const programmerDesk = require.context('../public/img/sets/', true, /programmer-desk-(300|768|1280)w\.png$/);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <App />,
+    children: [
+      /* {
+        path: 'contacts',
+        element: <p>test</p>,
+      }, */
+    ],
+  },
+]);
 
-function App() {
-  return (
-    <>
-      <h1>React App</h1>
-      <p>Test</p>
-      <hr />
-      <ResponsiveImage className="cls" loader={programmerDesk} alt="Hola mundo" width="300px" />
-    </>
-  );
-}
-
-const root = createRoot(document.getElementById('root'));
-
-root.render(<App />);
+const root = document.getElementById('root');
+ReactDOM.createRoot(root).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+);

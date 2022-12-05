@@ -1,0 +1,101 @@
+@mixin margin-auto($direction: horizontal){
+    @if $direction==horizontal {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @else if $direction==vertical {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    @else{
+      @error "margin-auto has been passed an invalid argument: #{$direction}, choose {horizontal, vertical}";
+    }
+  }
+  
+  @mixin pseudo($display: block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;
+  }
+  
+  @mixin placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+  }
+  
+  @mixin box-shadow($value) {
+    -webkit-box-shadow: $value;
+    -moz-box-shadow: $value;
+    box-shadow: $value;
+  }
+  
+  @mixin rounded($radius: 0.5em) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+  }
+  
+  @mixin transform($value) {
+    -webkit-transform: $value;
+         -ms-transform: $value;
+             transform: $value;
+  }
+  
+  @mixin transition($values...) {
+    -webkit-transition: $values;
+         -o-transition: $values;
+            transition: $values;
+  }
+  
+  @mixin animation($value) {
+    -webkit-animation: $value;
+          animation: $value; 
+  }
+  
+  @mixin grid {
+    display: -ms-grid;
+    display: grid;
+  }
+  
+  %grid{
+    @include grid;
+  }
+  
+  @mixin inline-grid {
+    display: -ms-inline-grid;
+    display: inline-grid;
+  }
+  
+  %inline-grid{
+    @include inline-grid;
+  }
+  
+  @mixin scroll-style($size: 10px,
+    $thumb: none,
+    $thumb-color: grey,
+    $thumb-radius: 10px,
+    $track-color: transparent,
+    $track-radius: 10px) {
+  
+    // Respaldo para Firefox
+    scrollbar-color: $thumb-color $track-color;
+    scrollbar-width: thin;
+  
+    // Navegadores basados en webkit
+    &::-webkit-scrollbar {
+      width: $size;
+      height: $size;
+      &-track {
+        background-color: $track-color;
+        border-radius: $track-radius;
+      }
+      &-thumb {
+        background-color: $thumb-color;
+        background-image: $thumb;
+        border-radius: $thumb-radius;
+      }
+    }
+  }
