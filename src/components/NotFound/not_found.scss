@@ -71,6 +71,12 @@ section#intro.error{
                 width: 9.5%;
                 @include animation(float-anim 5s ease-in-out 0s infinite alternate);   
             }
+
+            &.paper-fall{
+                bottom: 2.5%;
+                left: 10%;
+                width: 51%;                               
+            }
         }
     }
 }
@@ -84,16 +90,6 @@ section#intro.error{
     }
 }
 
-@include mq('tablet-small'){
-    section#intro.error{
-      
-
-       section.text{
-        
-       }
-       
-    }
-}
 
 @media (orientation: landscape){
     section#intro.error{

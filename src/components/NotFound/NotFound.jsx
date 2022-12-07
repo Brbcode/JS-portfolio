@@ -14,6 +14,7 @@ const messyDesk = require.context('../../../public/images/sets/', true, /messy-d
 const plant = require.context('../../../public/images/sets/', true, /plant-(300|768|1280)w\.png$/);
 const floatWeb = require.context('../../../public/images/sets/', true, /float-web-(300|768|1280)w\.png$/);
 const floatCode = require.context('../../../public/images/sets/', true, /float-code-(300|768|1280)w\.png$/);
+const paperFall = require.context('../../../public/images/sets/', true, /paper-fall-(300|768|1280)w\.gif$/);
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -77,6 +78,7 @@ export default function NotFound() {
         <Image loader={floatCode} className="img float-code" alt="Float code image." />
         <Image loader={messyDesk} className="img messy-desk" alt="Messy desk image." />
         <Image loader={plant} className="img plant" alt="Plant image." />
+        <Image loader={paperFall} className="img paper-fall" alt="Paper falling animation image." />
       </section>
     </section>
   );
