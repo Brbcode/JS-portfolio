@@ -13,6 +13,7 @@ import {
 // Components
 import BurgerButton from '../BurgerButton/BurgerButton';
 import Nav from '../Nav/Nav';
+import Logo from '../Logo/Logo';
 
 library.add(faSpinner, faUser, faHouse);
 
@@ -39,7 +40,7 @@ export default function Header() {
 
   return (
     <header className={classNames('flex', 'flex-row', 'align-items-center', 'justify-content-space-between', { sticky: scroll })}>
-      <Link to="/" className="logo">Logo</Link>
+      <Link to="/" className="logo-link"><Logo /></Link>
       <Nav items={navItems} className={classNames({ active: navActive })} />
       <BurgerButton onActiveChange={(v) => setNavActive(v)} />
     </header>

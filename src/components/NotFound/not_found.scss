@@ -5,15 +5,14 @@
 
 section#intro.error{
     height: calc(100vh - t-var('footer-height'));
-    @include flex(column);
+    @include flex;
+    @include justify-content(center);
+    @include align-items(center);
     $text-height: 190px;
     background: url('../../../public/images/section-bg.png') 0% 0% / 100% no-repeat;
 
-
-
     section.text{
-        padding: 1em 2em;       
-        height: $text-height; 
+        padding: 1em 2em;           
 
         h1{
             font-weight: 900;
@@ -33,36 +32,93 @@ section#intro.error{
             padding-top: .5em;
             gap: .8em;
         }
-    }
 
-    .img{
-        @include flex-grow(1);
-        flex-shrink: 1;
-        object-fit: contain;
-        margin-bottom: 2em;
-        max-height: calc(100% - $text-height);
+        .btn{
+            font-size: .9em;
+        }
+    }   
+
+    section.illustration{        
+        aspect-ratio: 1/.98;        
+        position: relative;     
+
+        .img{
+            position: absolute;            
+
+            &.messy-desk{
+                bottom: 4.3%;
+                left: 13.3%;
+                width: 62.5%;
+            }
+
+            &.plant{
+                bottom: 26.2%;
+                right: 11.6%;
+                width: 15%;
+            }
+
+            &.float-web{
+                top: 5.3%;
+                left: 11.2%;
+                width: 28.3%;
+                animation: name duration timing-function delay iteration-count direction fill-mode;
+                @include animation(float-anim 5s ease-in-out 0s infinite alternate-reverse);                
+            }
+
+            &.float-code{
+                top: 7.8%;
+                left: 35.1%;
+                width: 9.5%;
+                @include animation(float-anim 5s ease-in-out 0s infinite alternate);   
+            }
+        }
+    }
+}
+
+@keyframes float-anim {
+    0%{
+        transform: translate(0,0);
+    }
+    100%{
+        transform: translate(5%,-3%);
     }
 }
 
 @include mq('tablet-small'){
     section#intro.error{
-       @include flex-direction(row);
-       @include align-items(stretch);
-       overflow-x: hidden;
+      
 
        section.text{
-        position: relative;
-        font-size: 130%;
-        height: unset;
-        top: 10%;
-        left: 10%;
-        height: max-content;
-        @include flex-shrink(0);
+        
        }
+       
+    }
+}
 
-       .img{
-        max-height: 100%;
-        @include flex-shrink(1);
-       }
+@media (orientation: landscape){
+    section#intro.error{
+        @include flex-direction(row);
+
+        section.text{
+            font-size: 3vw;    
+        }
+
+        section.illustration{
+            height: 100%;
+        }
+    }
+}
+
+@media (orientation: portrait){
+    section#intro.error{
+        @include flex-direction(column);
+        
+        section.text{
+            font-size: 5vw;    
+        }
+
+        section.illustration{
+            width: 100%;
+        }
     }
 }

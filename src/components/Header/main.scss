@@ -11,7 +11,11 @@
     height: t-var('header-height');
     background: t-var('primary-color');
     font-size: 1.4rem;
-    padding: 1em 2em;    
+    padding: .5em 2em;    
+
+    .logo-link{
+      height: 100%;
+    }
 
     > nav{
       position: fixed;

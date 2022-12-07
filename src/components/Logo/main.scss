@@ -1,0 +1,44 @@
+@import '../../scss/mixins';
+@import '../../scss/theme';
+
+svg#logo{
+    height: 100%;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 80px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    cursor: pointer;
+
+    #path-1,#path-3{
+        @include transition(.4s);
+    }
+
+    #path-2{        
+        stroke-dasharray: 1740 0;
+        stroke-dashoffset: 0;  
+        @include transition(1s);      
+    }
+
+    #path-3{
+        stroke-dasharray: 860;
+        stroke-dashoffset: 0;
+    }
+
+    &:hover{
+        #path-1,#path-2,#path-3{
+            stroke: t-var('primary-em-font-color');
+        }
+
+        #path-2{
+            stroke-dasharray: 0 1740;
+            stroke-dashoffset: 879;
+            stroke-width: 0px;            
+        }
+
+        #path-3{
+            stroke-dasharray: 424;
+            stroke-dashoffset: 642;
+        }
+    }
+}
