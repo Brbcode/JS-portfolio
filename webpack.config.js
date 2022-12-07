@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const devMode = process.env.NODE_ENV.trim() !== 'production';
-const chucksCSS = ['main', 'not-found'];
+const chucksCSS = ['main', 'home', 'not-found'];
 
 module.exports = {
   entry: {

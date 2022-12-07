@@ -8,14 +8,14 @@ import './main.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faUser, faHouse, faSpinner,
+  faUser, faHouse, faSpinner, faPenNib,
 } from '@fortawesome/free-solid-svg-icons';
 // Components
 import BurgerButton from '../BurgerButton/BurgerButton';
 import Nav from '../Nav/Nav';
 import Logo from '../Logo/Logo';
 
-library.add(faSpinner, faUser, faHouse);
+library.add(faSpinner, faUser, faHouse, faPenNib);
 
 export default function Header() {
   const [navActive, setNavActive] = useState(false);
@@ -31,6 +31,11 @@ export default function Header() {
     icon: <FontAwesomeIcon icon={faHouse} />,
     label: 'Home',
     url: '/',
+
+  }, {
+    icon: <FontAwesomeIcon icon={faPenNib} />,
+    label: 'Projects',
+    url: '/projects',
   }, {
     icon: <FontAwesomeIcon icon={faUser} />,
     label: 'About',

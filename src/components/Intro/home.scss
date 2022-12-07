@@ -1,0 +1,116 @@
+@use 'sass:math';
+@import '../../scss/theme';
+@import '../../scss/flexbox';
+@import '../../scss/mixins';
+
+section#intro{
+    height: calc(100vh - t-var('footer-height'));
+    @include flex;
+    @include justify-content(center);
+    @include align-items(center);
+    $text-height: 190px;
+    background: url('../../../public/images/section-bg.png') 0% 0% / 100% no-repeat;
+
+    section.text{
+        padding: 1em 2em;           
+
+        h1{
+            font-weight: 900;
+
+            
+        }
+
+        em{
+            color: t-var('primary-em-font-color');
+        }
+
+        h2{
+            font-weight: 700;
+            opacity: .8;
+        }
+
+        nav{
+            padding-top: .5em;
+            gap: .8em;
+        }
+
+        .text-scramble{
+            white-space: nowrap;
+            width: 1rem;
+        }
+    }   
+
+    section.illustration{        
+        aspect-ratio: 1/.98;        
+        position: relative;     
+
+        .img{
+            position: absolute;            
+
+            &.messy-desk{
+                bottom: 4.3%;
+                left: 13.3%;
+                width: 62.5%;
+            }
+
+            &.plant{
+                bottom: 26.2%;
+                right: 11.6%;
+                width: 15%;
+            }
+
+            &.float-web{
+                top: 5.3%;
+                left: 11.2%;
+                width: 28.3%;
+                animation: name duration timing-function delay iteration-count direction fill-mode;
+                @include animation(float-anim 5s ease-in-out 0s infinite alternate-reverse);                
+            }
+
+            &.float-code{
+                top: 7.8%;
+                left: 35.1%;
+                width: 9.5%;
+                @include animation(float-anim 5s ease-in-out 0s infinite alternate);   
+            }
+        }
+    }
+}
+
+@keyframes float-anim {
+    0%{
+        transform: translate(0,0);
+    }
+    100%{
+        transform: translate(5%,-3%);
+    }
+}
+
+
+@media (orientation: landscape){
+    section#intro{
+        @include flex-direction(row);
+
+        section.text{
+            font-size: 3vw;    
+        }
+
+        section.illustration{
+            height: 100%;
+        }
+    }
+}
+
+@media (orientation: portrait){
+    section#intro{
+        @include flex-direction(column);
+        
+        section.text{
+            font-size: 5vw;    
+        }
+
+        section.illustration{
+            width: 100%;
+        }
+    }
+}
