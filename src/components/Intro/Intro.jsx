@@ -3,7 +3,6 @@ import './home.scss';
 import Image from '../ResponsiveImage';
 import TextScramble from '../TextScramble/TextScramble';
 
-const messyDesk = require.context('../../../public/images/sets/', true, /messy-desk-(300|768|1280)w\.png$/);
 const desk = require.context('../../../public/images/sets/', true, /desk-(300|768|1280)w\.png$/);
 const plant = require.context('../../../public/images/sets/', true, /plant-(300|768|1280)w\.png$/);
 const floatWeb = require.context('../../../public/images/sets/', true, /float-web-(300|768|1280)w\.png$/);
