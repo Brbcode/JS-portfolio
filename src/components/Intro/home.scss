@@ -20,16 +20,13 @@ section#intro{
         }
 
         h2{
+            font-weight: 700;
             font-size: 1.8em;
+            white-space: nowrap;
         }
 
         em{
             color: t-var('primary-em-font-color');
-        }
-
-        h2{
-            font-weight: 700;
-            opacity: .8;
         }
 
         nav{
