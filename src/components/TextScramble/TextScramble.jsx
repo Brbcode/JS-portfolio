@@ -36,7 +36,7 @@ export default function TextScramble(props) {
         begin: setTimeout(() => {
           setOutput((v) => {
             const o = [...v];
-            o[i] = <span>{char()}</span>;
+            o[i] = <span key={i}>{char()}</span>;
             return o;
           });
         }, beginDelay),
