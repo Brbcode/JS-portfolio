@@ -4,7 +4,7 @@
 @import '../../scss/mixins';
 
 section#intro{
-    height: calc(100vh - t-var('footer-height'));
+    height: calc(100vh - t-var('footer-height')) !important;
     @include flex;
     @include justify-content(center);
     @include align-items(center);
@@ -16,8 +16,11 @@ section#intro{
 
         h1{
             font-weight: 900;
+            font-size: 1.2em;            
+        }
 
-            
+        h2{
+            font-size: 1.8em;
         }
 
         em{
@@ -37,6 +40,11 @@ section#intro{
         .text-scramble{
             white-space: nowrap;
             width: 1rem;
+            
+            span {    
+                opacity: .8;
+                font-weight: 100;
+            }
         }
     }   
 
@@ -114,3 +122,4 @@ section#intro{
         }
     }
 }
+

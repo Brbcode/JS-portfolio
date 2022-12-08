@@ -55,15 +55,15 @@ export default function Intro() {
           &nbsp;
           There
         </h1>
-        <p>
+        <h2>
           I
           <em>&apos;</em>
           m
           {' '}
-          <em>Bruno García Trípoli</em>
-        </p>
+          <em>Bruno García</em>
+        </h2>
         <br />
-        <TextScramble set={textSet} duration={2} className="text-scramble" />
+        <TextScramble set={textSet} duration={0.8} waitTime={2} className="text-scramble" />
       </section>
       <section className="illustration" ref={illustration} style={{ width, height }}>
         <Image loader={floatWeb} className="img float-web" alt="Float website image." />
