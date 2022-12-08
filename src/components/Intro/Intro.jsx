@@ -4,6 +4,7 @@ import Image from '../ResponsiveImage';
 import TextScramble from '../TextScramble/TextScramble';
 
 const messyDesk = require.context('../../../public/images/sets/', true, /messy-desk-(300|768|1280)w\.png$/);
+const desk = require.context('../../../public/images/sets/', true, /desk-(300|768|1280)w\.png$/);
 const plant = require.context('../../../public/images/sets/', true, /plant-(300|768|1280)w\.png$/);
 const floatWeb = require.context('../../../public/images/sets/', true, /float-web-(300|768|1280)w\.png$/);
 const floatCode = require.context('../../../public/images/sets/', true, /float-code-(300|768|1280)w\.png$/);
@@ -68,7 +69,7 @@ export default function Intro() {
       <section className="illustration" ref={illustration} style={{ width, height }}>
         <Image loader={floatWeb} className="img float-web" alt="Float website image." />
         <Image loader={floatCode} className="img float-code" alt="Float code image." />
-        <Image loader={messyDesk} className="img messy-desk" alt="Messy desk image." />
+        <Image loader={desk} className="img desk" alt="Messy desk image." />
         <Image loader={plant} className="img plant" alt="Plant image." />
       </section>
     </section>
