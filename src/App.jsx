@@ -14,7 +14,6 @@ export default function App({ children }) {
       <Header />
       <main>
         {children}
-        <div className="toremove" />
       </main>
       <Footer />
     </>

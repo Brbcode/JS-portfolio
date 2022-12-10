@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './home.scss';
 import Image from '../ResponsiveImage';
-import TextScramble from '../TextScramble/TextScramble';
+import TextScramble from '../TextScramble';
 
 const desk = require.context('../../../public/images/sets/', true, /desk-(300|768|1280)w\.png$/);
 const plant = require.context('../../../public/images/sets/', true, /plant-(300|768|1280)w\.png$/);
