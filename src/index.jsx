@@ -3,16 +3,21 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Home from './components/Home/Home';
+import NotFound from './components/NotFound/NotFound';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App><Home /></App>,
-    errorElement: <App />,
+    element: <App />,
+    errorElement: <App><NotFound /></App>,
     children: [
       {
+        path: '/',
+        element: <Home />,
+      },
+      {
         path: 'projects',
-        element: <p>test</p>,
+        element: <p>To do</p>,
       },
     ],
   },

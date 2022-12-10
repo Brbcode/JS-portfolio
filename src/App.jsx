@@ -1,10 +1,11 @@
 // React imports
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
+
 // Style imports
 import './scss/main.scss';
 // Components imports
-import NotFound from './components/NotFound/NotFound';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -13,7 +14,8 @@ export default function App({ children }) {
     <>
       <Header />
       <main>
-        {children}
+        { children }
+        <Outlet />
       </main>
       <Footer />
     </>
@@ -25,5 +27,5 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  children: <NotFound />,
+  children: null,
 };
