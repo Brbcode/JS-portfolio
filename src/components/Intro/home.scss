@@ -4,7 +4,7 @@
 @import '../../scss/mixins';
 
 section#intro{
-    height: calc(100vh - t-var('footer-height')) !important;
+    min-height: calc(100vh - t-var('footer-height')) !important;
     @include flex;
     @include justify-content(center);
     @include align-items(center);
