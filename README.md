@@ -1,52 +1,23 @@
 ![Preview](.github/images/react-app.png)
 # JS-portfolio
-Esta aplicación proporciona un buscador de libros digitales, muestra la información relacionada de dicho libro y permite descargar dicho libro.
+On development project.
 
-## React install
-``npm init``
-
-``npm install react --save``
-
-``npm install react-dom --save``
-
-``npm install parcel-bundler --save-dev``
-
-### Install EsLint plugin
-``npm install -g eslint``
-
-``eslint --init``
-
-Edit eslint file configuration:
-```
-{
-    "extends": "airbnb",
-    "env": {
-        "browser": true
-    },
-    "rules": {
-        "linebreak-style": "off"
+## Getting Started
+Clone this repository. You will need to have ``node.js``, ``npm`` and ``git`` installed on your computer.
+### 🛠 Installation and Setup Instructions
+Install npm modules, run the command: ``npm install``
+Extra setup for developers:
+- Install EsLint globally ``npm install -g eslint`` or as development dependency with ``npm install -D eslint``
+- If you are working with Visual Studio Code install EsLint extension.
+- Go to ``File > Preferences > Settings`` and click the button to display json settings.
+    - Add these 4 lines:
+    ```
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
     }
-}
-```
-
-``npm add --save-dev eslint-config-airbnb``
-
-``npm add --save-dev eslint-plugin-import``
-
-``npm add --save-dev eslint-plugin-hsx-a11y``
-
-``npm add --save-dev eslint-plugin-react``
-
-#### Visual Studio
-File > Preferences > Settings (JSON)
-Add this 4 lines: 
-```
-"eslint.format.enable": true,
-"editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-}
-```
-
-## Formatos
-  - .epub
-  - .mobi
+    ```
+#### Run in development mode
+To run in development mode just run the command ``npm start`` and open [http://localhost:3000/](http://localhost:3000/) on your favourite browser.
+#### Run in production mode
+First, build the project with the command ``npm run build`` go to ``dist``:file_folder: folder and look for file ``index.html`` open this file with ``Live Server``.
