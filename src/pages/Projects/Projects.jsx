@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPager } from '@fortawesome/free-solid-svg-icons';
 // Components
 import Image from '../../components/ResponsiveImage';
-import NotFound from '../../components/NotFound/NotFound';
 // Style
 import './projects.scss';
 
@@ -27,26 +26,6 @@ export const ProjectList = [
       </>),
   },
 ];
-
-export function Project() {
-  const { id } = useParams();
-  const ids = {
-    test: {
-      title: 'Test project route',
-      element: <h1>Element found</h1>,
-    },
-  };
-
-  if (ids[id] === undefined) return <NotFound />;
-  return (
-    <>
-      <h2>
-        {ids[id].title}
-      </h2>
-      {ids[id].element}
-    </>
-  );
-}
 
 export default function Projects() {
   return (

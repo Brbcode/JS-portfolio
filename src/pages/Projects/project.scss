@@ -1,0 +1,22 @@
+@import '../../scss/theme';
+@import '../../scss/flexbox';
+@import '../../scss/mixins';
+
+
+main > section#intro.product-intro{
+    min-height: max-content !important;    
+
+    h2 {
+        position: relative;        
+        padding: 0.2em .6em;
+        font-weight: 500;
+        background: t-var('primary-em-font-color');
+
+        &::after{
+            @include pseudo;
+            height: 100%;
+            width: 3em;            
+            top: 0;
+        }
+    }
+}
