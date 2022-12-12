@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import NotFound from '../../components/NotFound/NotFound';
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPager } from '@fortawesome/free-solid-svg-icons';
+// Components
 import Image from '../../components/ResponsiveImage';
+import NotFound from '../../components/NotFound/NotFound';
 // Style
 import './projects.scss';
+
+library.add(faPager);
 
 const elib = require.context('../../../public/images/sets/', true, /desk-(300|768|1280)w\.png$/);
 
@@ -62,7 +69,11 @@ export default function Projects() {
             <section className="description">
               {description}
             </section>
-            <Link to={`/projects/${id}`}>View</Link>
+            <Link to={`/projects/${id}`} className="visit">
+              <FontAwesomeIcon icon={faPager} />
+              {' '}
+              View
+            </Link>
           </article>
         ))}
       </section>

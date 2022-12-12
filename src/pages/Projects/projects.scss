@@ -27,20 +27,58 @@ section#intro.projects{
     section.product-list{
         width: 100%;
         padding: 0 2em;
+        @include flex(row);
+        @include flex-grow(1);
+        gap: 1em;
 
         > article.product{
+            @include flex(column);
             @include rounded;
             @include box-shadow(0px 0px 3px 0px t-var('primary-em-font-color'));
             padding: 1em;
+            width: 100%;
 
             
             > h2{
                 text-align: center;
+                font-weight: 500;
             }
 
             > section.description{
                 text-align: justify;
+                @include flex-grow(1);
+                margin-bottom: 1em;
             }
+
+            .visit{
+                @include rounded;
+                padding: .5em 1em;
+                margin-left: auto;
+                font-weight: 700;
+                width: max-content;
+                background-color: t-var('primary-em-font-color');
+                @include transition(filter .3s);
+
+                &:hover{
+                    filter: brightness(.7) contrast(1.5);
+                }
+            }
+        }
+    }
+}
+
+@include mq('tablet'){
+    section#intro.projects {
+        section.product-list{
+            width: 50%;
+        }
+    }
+}
+
+@include mq('desktop'){
+    section#intro.projects {
+        section.product-list{
+            width: calc(100% / 3);
         }
     }
 }
