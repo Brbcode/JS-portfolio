@@ -26,6 +26,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/', // Crash on build
     filename: 'bundle.js',
     assetModuleFilename: '[path][hash][ext]',
     clean: true,
@@ -69,6 +70,7 @@ module.exports = {
     }),
   ],
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, 'dist'),
     },
