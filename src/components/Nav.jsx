@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 export default function Nav(props) {
-  const { items, ...childprops } = props;
+  const { parentState, items, ...childprops } = props;
+  const [, setActive] = parentState;
 
   return (
     <nav {...childprops}>
       <ul>
         {items.map(({ icon, label, url }) => (
           <li key={label}>
-            <NavLink to={url}>
+            <NavLink to={url} onClick={() => setActive(false)}>
               {icon}
               {' '}
               {label}
@@ -23,6 +24,7 @@ export default function Nav(props) {
 }
 
 Nav.propTypes = {
+  parentState: PropTypes.array.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
     icon: PropTypes.element,
     label: PropTypes.string,

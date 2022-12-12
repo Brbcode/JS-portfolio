@@ -6,6 +6,7 @@
     "rules": {
         "linebreak-style": "off",
         "react/jsx-props-no-spreading": "off",
-        "global-require": 0
+        "global-require": 0,
+        "react/forbid-prop-types": 0
     }
 }

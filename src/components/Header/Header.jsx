@@ -12,14 +12,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 // Components
 import BurgerButton from '../BurgerButton/BurgerButton';
-import Nav from '../Nav/Nav';
+import Nav from '../Nav';
 import Logo from '../Logo/Logo';
 
 library.add(faSpinner, faUser, faHouse, faPenNib);
 
 export default function Header() {
-  const [navActive, setNavActive] = useState(false);
+  const navState = useState(false);
+  const [navActive, setNavActive] = navState;
   const [scroll, setScroll] = useState(false);
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       setScroll(window.scrollY > 5);
@@ -46,8 +48,15 @@ export default function Header() {
   return (
     <header className={classNames('flex', 'flex-row', 'align-items-center', 'justify-content-space-between', { sticky: scroll })}>
       <Link to="/" className="logo-link"><Logo /></Link>
-      <Nav items={navItems} className={classNames({ active: navActive })} />
-      <BurgerButton onActiveChange={(v) => setNavActive(v)} />
+      <Nav items={navItems} className={classNames({ active: navActive })} parentState={navState} />
+      <BurgerButton
+        onActiveChange={(v) => setNavActive(v)}
+        parentState={navState}
+      />
     </header>
   );
 }
+
+Header.prototype.bindState = (state) => {
+  Object.assign(this.state, state);
+};

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './burger-button.scss';
 
 export default function BurgerButton(props) {
-  const [active, setActive] = useState(false);
-  const { onActiveChange, ...childprops } = props;
+  const { parentState, onActiveChange, ...childprops } = props;
+  const [active, setActive] = parentState;
 
   return (
     <button
@@ -15,7 +15,6 @@ export default function BurgerButton(props) {
         { active },
       )}
       onClick={() => {
-        onActiveChange(!active);
         setActive((v) => !v);
       }}
       {...childprops}
@@ -30,16 +29,10 @@ export default function BurgerButton(props) {
 }
 
 BurgerButton.propTypes = {
+  parentState: PropTypes.array.isRequired,
   onActiveChange: PropTypes.func,
 };
 
 BurgerButton.defaultProps = {
   onActiveChange: () => {},
 };
-
-/*
-
-<i className="bar-top" />
-      <i className="bar-middle" />
-      <i className="bar-bottom" />
-      */
