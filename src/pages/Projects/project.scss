@@ -4,19 +4,15 @@
 
 
 main > section#intro.product-intro{
-    min-height: max-content !important;    
+    min-height: max-content !important;   
+    padding-left: 2em;
+    @include flex(row);
+    @include justify-content(flex-start) ;
 
     h2 {
         position: relative;        
         padding: 0.2em .6em;
         font-weight: 500;
-        background: t-var('primary-em-font-color');
-
-        &::after{
-            @include pseudo;
-            height: 100%;
-            width: 3em;            
-            top: 0;
-        }
+        margin-top: 2em;
     }
 }

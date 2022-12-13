@@ -11,19 +11,26 @@ import './projects.scss';
 
 library.add(faPager);
 
-const elib = require.context('../../../public/images/sets/', true, /desk-(300|768|1280)w\.png$/);
+const desk = require.context('../../../public/images/sets/', true, /desk-(300|768|1280)w\.png$/);
 
 export const ProjectList = [
   {
     id: 0,
     title: 'E-Library',
-    preview: elib,
+    preview: desk,
     status: 'visible',
     description: (
-      <>
-        <p>p1</p>
-        <p>p2</p>
-      </>),
+      <p>
+        Online library where users can access, download books and view
+        details using the metadata stored in the book&apos;s file with an extension like
+        {' '}
+        <em>epub</em>
+        ,
+        {' '}
+        <em>mobi</em>
+        {' '}
+        and more.
+      </p>),
   },
 ];
 
@@ -43,7 +50,9 @@ export default function Projects() {
           id, title, preview, description,
         }) => (
           <article key={id} id={`product-${id}`} className="product">
-            <Image loader={preview} alt="Product preview" />
+            <section className="preview">
+              <Image loader={preview} alt="Product preview" />
+            </section>
             <h2>{title}</h2>
             <section className="description">
               {description}
