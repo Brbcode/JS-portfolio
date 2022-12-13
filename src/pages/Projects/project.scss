@@ -3,7 +3,7 @@
 @import '../../scss/mixins';
 
 
-main > section#intro.product-intro{
+main > section#intro.project-intro{
     min-height: max-content !important;   
     padding-left: 2em;
     @include flex(row);
@@ -15,4 +15,8 @@ main > section#intro.product-intro{
         font-weight: 500;
         margin-top: 2em;
     }
+}
+
+main > section.project-main{
+    padding: 1em 2em;
 }

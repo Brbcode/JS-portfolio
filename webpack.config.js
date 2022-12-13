@@ -49,6 +49,11 @@ module.exports = {
 
       },
       {
+        test: /\.(epub|mobi)$/i,
+        type: 'asset/resource',
+
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,

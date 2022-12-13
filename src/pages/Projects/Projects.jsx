@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPager } from '@fortawesome/free-solid-svg-icons';
 // Components
 import Image from '../../components/ResponsiveImage';
+import ELibrary from '../../components/Projects/ELibrary/ELibrary';
 // Style
 import './projects.scss';
 
@@ -31,6 +32,7 @@ export const ProjectList = [
         {' '}
         and more.
       </p>),
+    component: <ELibrary />,
   },
 ];
 

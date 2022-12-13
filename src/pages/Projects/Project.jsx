@@ -13,13 +13,14 @@ export default function Project() {
   if (ids[id] === undefined) return <NotFound />;
   return (
     <>
-      <section id="intro" className="product-intro">
+      <section id="intro" className="project-intro">
         <h2>
           {ids[id].title}
         </h2>
       </section>
-
-      {ids[id].element}
+      <section className="project-main">
+        {ids[id].component}
+      </section>
     </>
   );
 }
