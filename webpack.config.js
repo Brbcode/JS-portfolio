@@ -7,7 +7,8 @@ const chucksCSS = ['main', 'home', 'projects', 'not-found'];
 
 module.exports = {
   entry: {
-    index: './src/index.jsx',
+    client: './src/index.jsx',
+    server: './src/server/index.jsx',
   },
   optimization: {
     splitChunks: {
@@ -27,7 +28,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/', // Crash on build
-    filename: 'bundle.js',
+    filename: ({ chunk: { name } }) => {
+      switch (name) {
+        case 'client':
+          return 'bundle.js';
+        case 'server':
+          return 'server/index.js';
+        default:
+          return '[name].js';
+      }
+    },
     assetModuleFilename: '[path][hash][ext]',
     clean: true,
   },
@@ -70,11 +80,12 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       // Chunk name 'index' is set by entry point where is not recognized by any cacheGroup
-      filename: ({ chunk }) => `public/css/${chunk.name === 'index' ? 'styles' : chunk.name}.min.css`,
+      filename: ({ chunk }) => `public/css/${chunk.name === 'client' ? 'styles' : chunk.name}.min.css`,
       chunkFilename: '[id].css',
     }),
   ],
   devServer: {
+    open: true,
     historyApiFallback: true,
     static: {
       directory: path.join(__dirname, 'dist'),
