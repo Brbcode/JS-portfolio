@@ -8,7 +8,6 @@ const chucksCSS = ['main', 'home', 'projects', 'not-found'];
 module.exports = {
   entry: {
     client: './src/index.jsx',
-    server: './src/server/index.jsx',
   },
   optimization: {
     splitChunks: {
@@ -28,18 +27,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/', // Crash on build
-    filename: ({ chunk: { name } }) => {
-      switch (name) {
-        case 'client':
-          return 'bundle.js';
-        case 'server':
-          return 'server/index.js';
-        default:
-          return '[name].js';
-      }
-    },
+    filename: 'bundle.js',
     assetModuleFilename: '[path][hash][ext]',
-    clean: true,
   },
   module: {
     rules: [
@@ -77,6 +66,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './src/index.html'),
       favicon: path.join(__dirname, './public/favicon.ico'),
+      excludeChunks: ['server'],
     }),
     new MiniCssExtractPlugin({
       // Chunk name 'index' is set by entry point where is not recognized by any cacheGroup

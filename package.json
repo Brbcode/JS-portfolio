@@ -2,18 +2,27 @@
   "name": "js-portfolio",
   "version": "1.0.0",
   "description": "Esta aplicación proporciona un buscador de libros digitales, muestra la información relacionada de dicho libro y permite descargar dicho libro.",
-  "main": "index.js",
   "scripts": {
-    "start:darwin:linux": "NODE_ENV=development webpack serve --mode development",
-    "start:win32": "set NODE_ENV=development && webpack serve --mode development",
-    "start:default": "echo 'Platfom not found'.",
-    "start": "run-script-os",
-    "build:darwin:linux": "NODE_ENV=production webpack --mode=production",
-    "build:win32": "set NODE_ENV=production && webpack --mode=production",
-    "build:default": "echo 'Platfom not found'.",
-    "build": "run-script-os",
-    "build-clean": "echo 'Cleaning dist folder'. && rm -r -Force ./dist/*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "run-p clean-dist watch-client watch-server",
+    "build": "run-p build-client build-server",    
+    "watch-client:darwin:linux": "NODE_ENV=development webpack --mode=development --config webpack.client.config.js --watch",
+    "watch-client:win32": "NODE_ENV=development && webpack --mode=development --config webpack.client.config.js --watch",
+    "watch-client:default": "echo 'Platfom not found'.",
+    "watch-client": "run-script-os",
+    "watch-server:darwin:linux": "NODE_ENV=development webpack --mode=development --config webpack.server.config.js --watch",
+    "watch-server:win32": "NODE_ENV=development && webpack --mode=development --config webpack.server.config.js --watch",
+    "watch-server:default": "echo 'Platfom not found'.",
+    "watch-server": "run-script-os",
+    "clean-dist": "rm -rf dist/*",
+    "build-server:darwin:linux": "NODE_ENV=production webpack --mode=production --config webpack.server.config.js",
+    "build-server:win32": "NODE_ENV=production && webpack --mode=production --config webpack.server.config.js",
+    "build-server:default": "NODE_ENV=production webpack --mode=production --config webpack.server.config.js",
+    "build-server": "run-script-os",
+    "build-client:darwin:linux": "NODE_ENV=production webpack --mode=production --config webpack.client.config.js",
+    "build-client:win32": "NODE_ENV=production && webpack --mode=production --config webpack.client.config.js",
+    "build-client:default": "echo 'Platfom not found'.",
+    "build-client": "run-script-os",
+    "init": "nodemon ./dist/server/index.js"    
   },
   "repository": {
     "type": "git",
@@ -56,6 +65,8 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.1",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.0",
     "run-script-os": "^1.1.6",
     "sass": "^1.56.1",
@@ -63,7 +74,8 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "prettier": {
     "semi": true
